@@ -4,8 +4,8 @@
 **structs** allow you to create more complicated data types that have multiple properties.\
 **arrays** are used when you want a collection of something:
 
- _string[5]: fixed array can contain 5 strings_
- _uint[]: dynamic array can contain many variables, have no fixed size_
+- _string[5]: fixed array can contain 5 strings_\
+- _uint[]: dynamic array can contain many variables, have no fixed size_
 
 **public array** enables other smart contracts would be able to read from, but not write into it. useful for storing public data in your contract.\
 **array.push()** adds something to the end of the array.\
