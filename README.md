@@ -1,4 +1,6 @@
 ### Solidity Language Dictionary
+
+
 **uint** data type is an unsigned integer, it's value must be non-negative.\
 **structs** allow you to create more complicated data types that have multiple properties.\
 **arrays** are used when you want a collection of something;
@@ -10,7 +12,7 @@ _uint[] dynamic array can contain many variables, have no fixed size_
 **array.push()** adds something to the end of the array.\
 **private function** names start with an underscore, the parameters inside the function as well;
 
-_createZombies(_name, _dna)_
+ _createZombies(_name, _ _dna)_
 
 **view function** only views the data but not modifies it.\
 **pure function** disables access to any data in the app.
