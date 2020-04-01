@@ -4,21 +4,21 @@
 **structs** allow you to create more complicated data types that have multiple properties.\
 **arrays** are used when you want a collection of something:
 
-- _string[5]: fixed array can contain 5 strings_\
+- _string[5]: fixed array can contain 5 strings_
 - _uint[]: dynamic array can contain many variables, have no fixed size_
 
 **public array** enables other smart contracts would be able to read from, but not write into it. useful for storing public data in your contract.\
 **array.push()** adds something to the end of the array.\
 **private function** names start with an underscore, the parameters inside the function as well:
 
- *_createZombies(_name, _dna)*
+ -*_createZombies(_name, _dna)*
 
 **view function** only views the data but not modifies it.\
 **pure function** disables access to any data in the app.
 
 Ethereum has a hash function **keccak256** built in which is a version of SHA3. A hash function basically maps an input into a random 256-bit hex-decimal number. A slight change in the input will cause a large change in the hash. Keccak256 expects a single parameter of type bytes. This means that we have to "pack" any parameters before calling keccak256.
 
- _keccak256(abi.encodePacked("abc"));_
+ - _keccak256(abi.encodePacked("abc"));_
 
 **events** are a way of your contract to communicate that something happened on the blockchain to your app front-end, which can be "listening" for certain events and take action when they happen (triggers).\
 **mapping** is another way of storing organized data(key-value pairs, dictionary).\
