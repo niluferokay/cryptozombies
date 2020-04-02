@@ -37,13 +37,13 @@ In Solidity, function execution always needs to start with an external caller. A
 
 After deployed in Ethereum, smart contracts are **immutable**. If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.**setKittyContractAddress** function that lets us change this address in the future in case something happens to the CryptoKitties contract.
 
-**Ownable** means the external contracts have an owner who has special privileges to update and modify.\
+**Ownable** means the external contracts have an owner who has special privileges to update and modify.
 
-*1.When a contract is created, its constructor sets the owner to msg.sender (the person who deployed it)*
+*--1.When a contract is created, its constructor sets the owner to msg.sender (the person who deployed it)*
 
-*2.It adds an onlyOwner modifier, which can restrict access to certain functions to only the owner*
+*--2.It adds an onlyOwner modifier, which can restrict access to certain functions to only the owner*
 
-*3.It allows you to transfer the contract to a new owner*
+*--3.It allows you to transfer the contract to a new owner*
 
 **OpenZeppelin** is a library of secure and community-vetted smart contracts that you can use in your own DApps.\
 **Constructor** is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.\
