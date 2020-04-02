@@ -31,3 +31,11 @@ In Solidity, function execution always needs to start with an external caller. A
 **Storage** refers to variables stored permanently on the blockchain **memory** variables are temporarily stored and are erased between external function calls to the contract.\
 **Internal** is the same as private, except that it's also accessible to contracts that inherit from the contract.\
 **External** is similar to public except that these functions only be called inside that contract, they can't be called by other functions inside that contract.
+
+After deployed in Ethereum, smart contracts are **immutable**. If there's a flaw in your contract code, there's no way for you to patch it later. You would have to tell your users to start using a different smart contract address that has the fix.**setKittyContractAddress** function that lets us change this address in the future in case something happens to the CryptoKitties contract.\
+
+**Ownable** means the external contracts have an owner who has special privileges to update and modify.\
+**OpenZeppelin** is a library of secure and community-vetted smart contracts that you can use in your own DApps.\
+**Constructor** is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.\
+**Modifier** modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution.\
+**OnlyOwner** can be used to limit access so only the owner of the contract can run this function.\
