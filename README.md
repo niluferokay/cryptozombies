@@ -85,10 +85,9 @@ Or in a contract with a buyer and a seller, you could save the seller's address 
 How can I securely generate a random number in my smart contract?
 https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract
 
-A **token** is a contract that keeps track of who owns how much of that token, and some functions so those users can transfer their tokens to other addresses.\
+A **token** is a contract that keeps track of who owns how much of that token, and some functions so those users can transfer their tokens to other addresses.
 
 Now we're going to continue our ERC721 implementation by looking at transfering ownership from one person to another.
-
 Note that the ERC721 spec has 2 different ways to transfer tokens:
 
 *function transferFrom(address _from, address _to, uint256 _tokenId) external payable;*
@@ -115,15 +114,14 @@ An underflow is similar, where if you subtract 1 from a uint8 that equals 0, it 
 
 While we're not using uint8 here, and it seems unlikely that a uint256 will overflow when incrementing by 1 each time (2^256 is a really big number), it's still good to put protections in our contract so that our DApp never has unexpected behavior in the future.
 
-A library is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.
-
+A **library** is a special type of contract in Solidity. One of the things it is useful for is to attach functions to native data types.\
 For example, with the SafeMath library, we'll use the syntax using SafeMath for uint256. The SafeMath library has 4 functions — add, sub, mul, and div.
 
-assert is similar to require, where it will throw an error if false. The difference between assert and require is that require will refund the user the rest of their gas when a function fails, whereas assert will not. So most of the time you want to use require in your code; assert is typically used when something has gone horribly wrong with the code (like a uint overflow).
+**assert** is similar to require, where it will throw an error if false. The difference between assert and require is that require will refund the user the rest of their gas when a function fails, whereas assert will not. So most of the time you want to use require in your code; assert is typically used when something has gone horribly wrong with the code (like a uint overflow).
 
 *To prevent overflows and underflows, we can look for places in our code where we use +, -, *, or /, and replace them with add, sub, mul, div.*
 
-The standard in the Solidity community is to use a format called natspec, which looks like this:
+The **standard** in the Solidity community is to use a format called natspec, which looks like this:
 
 /// @title A contract for basic math operations
 /// @author H4XF13LD MORRIS 💯💯😎💯💯
@@ -141,12 +139,9 @@ contract Math {
 }
 
 @title and @author are straightforward.
-
 @notice explains to a user what the contract / function does. @dev is for explaining extra details to developers.
-
 @param and @return are for describing what each parameter and return value of a function are for.
-
-Note that you don't always have to use all of these tags for every function — all tags are optional. But at the very least, leave a @dev note explaining what each function does.
+*Note that you don't always have to use all of these tags for every function — all tags are optional. But at the very least, leave a **@dev** note explaining what each function does.*
 
 the Ethereum network is made up of nodes, with each containing a copy of the blockchain. When you want to call a function on a smart contract, you need to query one of these nodes and tell it:
 
@@ -156,28 +151,18 @@ the Ethereum network is made up of nodes, with each containing a copy of the blo
 Ethereum nodes only speak a language called JSON-RPC, which isn't very human-readable.Luckily, Web3.js hides these nasty queries below the surface, so you only need to interact with a convenient and easily readable JavaScript interface.
 Or you can simply download the minified .js file from github and include it in your project: *<script language="javascript" type="text/javascript" src="web3.min.js"></script>*
 
-##Web3 Providers
+## Web3 Providers
 
-Now that we have Web3.js in our project, let's get it initialized and talking to the blockchain.
-
-The first thing we need is a Web3 Provider.
-
+Now that we have **Web3.js** in our project, let's get it initialized and talking to the blockchain.
 Remember, Ethereum is made up of nodes that all share a copy of the same data. Setting a Web3 Provider in Web3.js tells our code which node we should be talking to handle our reads and writes. It's kind of like setting the URL of the remote web server for your API calls in a traditional web app.
 
-You could host your own Ethereum node as a provider. However, there's a third-party service that makes your life easier so you don't need to maintain your own Ethereum node in order to provide a DApp for your users — Infura.
+**Infura** is a service that maintains a set of Ethereum nodes with a caching layer for fast reads, which you can access for free through their API. Using Infura as a provider, you can reliably send and receive messages to/from the Ethereum blockchain without needing to set up and maintain your own node.
 
-Infura is a service that maintains a set of Ethereum nodes with a caching layer for fast reads, which you can access for free through their API. Using Infura as a provider, you can reliably send and receive messages to/from the Ethereum blockchain without needing to set up and maintain your own node.
-
-You can set up Web3 to use Infura as your web3 provider as follows:
-
+You can set up Web3 to use Infura as your web3 provider as follows:\
 *var web3 = new Web3(new Web3.providers.WebsocketProvider("wss://mainnet.infura.io/ws"));*
 
-However, since our DApp is going to be used by many users — and these users are going to WRITE to the blockchain and not just read from it — we'll need a way for these users to sign transactions with their private key.Metamask is a browser extension for Chrome and Firefox that lets users securely manage their Ethereum accounts and private keys, and use these accounts to interact with websites that are using Web3.js.
-And as a developer, if you want users to interact with your DApp through a website in their web browser (like we're doing with our CryptoZombies game), you'll definitely want to make it Metamask-compatible.
-
-##Talking to Contracts
-
-Now that we've initialized Web3.js with MetaMask's Web3 provider, let's set it up to talk to our smart contract.
+However, since our DApp is going to be used by many users — and these users are going to WRITE to the blockchain and not just read from it — we'll need a way for these users to sign transactions with their private key. **Metamask** is a browser extension for Chrome and Firefox that lets users securely manage their Ethereum accounts and private keys, and use these accounts to interact with websites that are using Web3.js.
+## Talking to Contracts
 
 Web3.js will need 2 things to talk to your contract: its address and its ABI.
 
